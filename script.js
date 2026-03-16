@@ -139,3 +139,25 @@ function handleClick() {
 
 toggleOpen.addEventListener('click', handleClick);
 toggleClose.addEventListener('click', handleClick);
+
+function submitContactUs() {
+  
+    
+    const SERVICE_ID = "service_sbgphf8";
+    const TEMPLATE_ID = "template_fp7aqd6";
+
+    emailjs.init("gAK9XxdQzt0DjLBum");
+
+
+    let form = document.getElementById("contact-form");
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form)
+        .then(function (response) {
+            console.log("SUCCESS!", response.status, response.text);
+            alert("Your message has been sent successfully!");
+            form.reset();
+        }, function (error) {
+            console.log("FAILED...", error);
+            alert("Failed to send your message. Please try again later.");
+        });
+   
+}
